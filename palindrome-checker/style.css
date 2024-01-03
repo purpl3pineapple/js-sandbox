@@ -1,0 +1,20 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px;
+  max-height: 100vh;
+}
+
+#checker {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 40%;
+  margin: auto auto;
+}
+
+#result {
+  padding: 10%;
+  font-size: 2rem;
+  font-weight: 500;
+}
