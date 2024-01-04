@@ -1,7 +1,27 @@
 @import "mixins";
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 main {
   @include main-display();
+}
+
+.important-text {
+  @extend .fs-6;
+  font-weight: 700;
+}
+
+.failed {
+  @extend .important-text;
+  color: $failed;
+}
+
+.success {
+  @extend .important-text;
+  color: $success;
 }
 
 #trakkr-form {
