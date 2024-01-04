@@ -16,6 +16,12 @@ $failed: rgb(199, 3, 42);
   }
 }
 
+@each $color in blue, purple, orange, green {
+  .#{$color}-text {
+    color: $color;
+  }
+}
+
 @for $itr from 1 through 12 {
   .col-#{$itr} {
     width: calc(100% / 12 * $itr);

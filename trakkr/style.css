@@ -1,3 +1,19 @@
+.blue-text {
+  color: blue;
+}
+
+.purple-text {
+  color: purple;
+}
+
+.orange-text {
+  color: orange;
+}
+
+.green-text {
+  color: green;
+}
+
 .col-1 {
   width: 8.3333333333%;
 }
