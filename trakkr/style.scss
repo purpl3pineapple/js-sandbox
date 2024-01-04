@@ -1,5 +1,20 @@
-$main-bg: rgb(0, 255, 255, 0.5);
 $ui-bg: rgba(0, 90, 90, 0.6);
+$main-bg: rgb(0, 255, 255, 0.5);
+$success: rgb(70, 195, 21);
+$loading: rgb(206, 206, 2);
+$failed: rgb(199, 3, 42);
+
+@mixin status($result) {
+  @if $result == success {
+    color: $success;
+  } @else if $result == loading {
+    color: $loading;
+  } @else if $result == failed {
+    color: $failed;
+  } @else {
+    color: azure;
+  }
+}
 
 @mixin main-display() {
   background-color: $main-bg;
