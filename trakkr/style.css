@@ -14,32 +14,40 @@
   color: green !important;
 }
 
-.fs-xsmall {
-  font-size: 0.4rem !important;
+.fs-1 {
+  font-size: 0.4rem;
 }
 
-.fs-small {
-  font-size: 0.6rem !important;
+.fs-2 {
+  font-size: 0.8rem;
 }
 
-.fs-medium {
-  font-size: 0.8rem !important;
+.fs-3 {
+  font-size: 1.2rem;
 }
 
-.fs-normal {
-  font-size: 1rem !important;
+.fs-4 {
+  font-size: 1.6rem;
 }
 
-.fs-large {
-  font-size: 2rem !important;
+.fs-5 {
+  font-size: 2rem;
 }
 
-.fs-xlarge {
-  font-size: 2.5rem !important;
+.fs-6 {
+  font-size: 2.4rem;
 }
 
-.fs-xxlarge {
-  font-size: 3rem !important;
+.fs-7 {
+  font-size: 2.8rem;
+}
+
+.fs-8 {
+  font-size: 3.2rem;
+}
+
+.fs-9 {
+  font-size: 3.6rem;
 }
 
 .blue-600 {
