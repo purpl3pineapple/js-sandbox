@@ -42,6 +42,30 @@
   font-size: 3rem !important;
 }
 
+.blue-600 {
+  background-color: rgb(0, 0, 55) !important;
+}
+
+.blue-500 {
+  background-color: rgb(0, 0, 115) !important;
+}
+
+.blue-400 {
+  background-color: rgb(0, 0, 255) !important;
+}
+
+.blue-300 {
+  background-color: rgb(0, 80, 255) !important;
+}
+
+.blue-200 {
+  background-color: rgb(32, 115, 255) !important;
+}
+
+.blue-100 {
+  background-color: rgb(65, 150, 255) !important;
+}
+
 .col-1 {
   width: 8.3333333333% !important;
 }

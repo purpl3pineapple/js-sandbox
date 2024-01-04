@@ -13,6 +13,15 @@ $sizes: (
   xxlarge: 3rem,
 );
 
+$bg-blues: (
+  600: rgb(0, 0, 55),
+  500: rgb(0, 0, 115),
+  400: rgb(0, 0, 255),
+  300: rgb(0, 80, 255),
+  200: rgb(32, 115, 255),
+  100: rgb(65, 150, 255),
+);
+
 @mixin status($result) {
   @if $result == success {
     color: $success !important;
@@ -34,6 +43,12 @@ $sizes: (
 @each $size, $value in $sizes {
   .fs-#{$size} {
     font-size: $value !important;
+  }
+}
+
+@each $tone, $blue in $bg-blues {
+  .blue-#{$tone} {
+    background-color: $blue !important;
   }
 }
 
