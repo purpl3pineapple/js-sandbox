@@ -11,7 +11,34 @@
 }
 
 .green-text {
-  color: green;
+}
+
+.fs-xsmall {
+  font-size: 0.4rem !important;
+}
+
+.fs-small {
+  font-size: 0.6rem !important;
+}
+
+.fs-medium {
+  font-size: 0.8rem !important;
+}
+
+.fs-normal {
+  font-size: 1rem !important;
+}
+
+.fs-large {
+  font-size: 2rem !important;
+}
+
+.fs-xlarge {
+  font-size: 2.5rem !important;
+}
+
+.fs-xxlarge {
+  font-size: 3rem !important;
 }
 
 .col-1 {
