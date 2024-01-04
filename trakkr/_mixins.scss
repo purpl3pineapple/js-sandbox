@@ -1,0 +1,18 @@
+@import "vars";
+@import "loops";
+
+@mixin status($result) {
+  @if $result == success {
+    color: $success !important;
+  } @else if $result == loading {
+    color: $loading !important;
+  } @else if $result == failed {
+    color: $failed !important;
+  } @else {
+    color: azure !important;
+  }
+}
+
+@mixin main-display() {
+  background-color: $main-bg !important;
+}

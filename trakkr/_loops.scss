@@ -1,0 +1,25 @@
+@each $color in blue, purple, orange, green {
+  .#{$color}-text {
+    color: $color !important;
+  }
+}
+
+@while $fonts < 10 {
+  .fs-#{$fonts} {
+    font-size: calc(0.4rem * $fonts);
+  }
+
+  $fonts: $fonts + 1;
+}
+
+@each $tone, $blue in $bg-blues {
+  .blue-#{$tone} {
+    background-color: $blue !important;
+  }
+}
+
+@for $itr from 1 through 12 {
+  .col-#{$itr} {
+    width: calc(100% / 12 * $itr) !important;
+  }
+}
