@@ -16,6 +16,12 @@ $failed: rgb(199, 3, 42);
   }
 }
 
+@for $itr from 1 through 12 {
+  .col-#{$itr} {
+    width: calc(100% / 12 * $itr);
+  }
+}
+
 @mixin main-display() {
   background-color: $main-bg;
 }
