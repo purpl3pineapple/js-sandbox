@@ -8,7 +8,6 @@ window.addEventListener("load", () => {
       return {
         str: strng,
         startsWithSpecialChar: /^[^a-z0-9]/i.test(str) === true,
-        specialChars: /[^a-z0-9]/gi.test(str) === true,
         result: strng.split("").reverse().join("") === strng,
       };
     }
