@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>!!!Playground!!!</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.13.2/themes/trontastic/jquery-ui.css"
+    />
+    <script
+      src="./playground.js"
+      type="module"
+    ></script>
+  </head>
+  <body
+    id="playground"
+    class="vh-100"
+  >
+    <main class="mh-100 d-flex flex-column">
+      <div
+        id="dice-game"
+        class="container my-4"
+      >
+        <div>
+          <form id="roll-dice">
+            <div class="row my-3">
+              <h2 class="text-center my-3 fw-bold">Dice Game</h2>
+              <div class="form-group col d-flex justify-content-between">
+                <div class="input-group">
+                  <!-- <span class="input-group-text">Rolls</span> -->
+                  <input
+                    id="rolls"
+                    name="rolls"
+                    type="number"
+                    min="1"
+                    class="form-control"
+                    placeholder="Enter Number of Rolls"
+                  />
+                  <button
+                    class="btn btn-primary fs1"
+                    type="button"
+                    form="roll-dice"
+                    id="dice-game-btn"
+                  >
+                    Roll Dice!
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div>
+          <p
+            id="dice-result"
+            class="my-3"
+          ></p>
+        </div>
+      </div>
+      <div
+        id="palindrome-checker"
+        class="container my-4"
+      >
+        <div>
+          <form
+            action=""
+            id="palindrome-check"
+          >
+            <div class="row my-3">
+              <h2 class="text-center my-3 fw-bold">Palindrome Checker</h2>
+              <div class="form-group col d-flex justify-content-between">
+                <div class="input-group">
+                  <input
+                    id="palindrome"
+                    name="palindrome"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter word"
+                  />
+                  <button
+                    class="btn btn-primary fs1"
+                    type="button"
+                    form="palindrome-check"
+                    id="palindrome-btn"
+                  >
+                    Check Palindrome
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div>
+          <p
+            id="palindrome-result"
+            class="my-3"
+          ></p>
+        </div>
+      </div>
+      <div
+        id="email-format-checker"
+        class="container my-4"
+      >
+        <div>
+          <form
+            action=""
+            id="email-validation"
+          >
+            <div class="row my-3">
+              <h2 class="text-center my-3 fw-bold">Email Format Validation</h2>
+              <div class="form-group col d-flex justify-content-between">
+                <div class="input-group">
+                  <input
+                    id="email"
+                    name="email"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter email"
+                  />
+                  <button
+                    class="btn btn-primary fs1"
+                    type="button"
+                    form="email-validation"
+                    id="email-validation-btn"
+                  >
+                    Check Email Format
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div>
+          <p
+            id="email-validation-result"
+            class="my-3"
+          ></p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
