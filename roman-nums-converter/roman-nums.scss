@@ -1,0 +1,30 @@
+@import "vars";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  text-align: center;
+  padding: 15%;
+}
+
+#convert {
+  @extend .mx-auto;
+  width: 50%;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+#number {
+  width: 50%;
+  @extend .mx-auto;
+}
+
+#convert-btn {
+  margin-top: 1rem;
+  width: 25%;
+  @extend .mx-auto;
+}

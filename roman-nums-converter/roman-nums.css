@@ -1,0 +1,30 @@
+.mx-auto, #convert-btn, #number, #convert {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  text-align: center;
+  padding: 15%;
+}
+
+#convert {
+  width: 50%;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+#number {
+  width: 50%;
+}
+
+#convert-btn {
+  margin-top: 1rem;
+  width: 25%;
+}/*# sourceMappingURL=roman-nums.css.map */
