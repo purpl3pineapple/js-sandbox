@@ -1,48 +1,106 @@
-class ListNode {
+class Node {
   constructor(data) {
     this.data = data;
     this.next = null;
   }
 }
 
-export default class LinkedList {
+class LinkedList {
   constructor(head = null) {
     this.head = head;
+    this.tail = null;
     this.size = 0;
   }
 
-  shift(data) {
-    let node = new ListNode(data);
+  shift() {
+    if (this.head) {
+      let node = new Node(this.head.data);
 
-    node.next = this.head;
+      this.head = this.head.next;
 
-    this.head = node;
+      this.size--;
 
-    this.size++;
+      if (this.size === 0) {
+        this.tail = null;
+      }
+
+      return node.data;
+    } else {
+      return this.head;
+    }
+  }
+
+  insertAt(index, data) {
+    const node = new Node(data);
+    let current = this.head;
+    let track = 0;
+    let previous = null;
+
+    if (index === 0) {
+      node.next = this.head;
+      this.head = node;
+    } else {
+      while (track < index) {
+        previous = current;
+        current = current.next;
+        track++;
+      }
+
+      node.next = current;
+      previous.next = node;
+    }
+  }
+
+  removeFrom(index) {
+    let current = this.head;
+    let track = 0;
+    let previous = null;
+
+    if (index === 0) {
+      this.head = this.head.next;
+    } else {
+      while (track < index) {
+        previous = current;
+        current = current.next;
+        track++;
+      }
+
+      previous.next = current.next;
+      this.size--;
+    }
   }
 
   add(data) {
-    let node = new ListNode(data);
-
-    let current;
+    const node = new Node(data);
 
     if (this.head === null) {
       this.head = node;
-      this.size++;
-      return;
     } else {
-      current = this.head;
-
-      while (current.next) {
-        current = current.next;
-      }
-
-      current.next = node;
+      this.tail.next = node;
     }
+
+    this.tail = node;
     this.size++;
   }
 
-  forEach(callback, arg) {
+  get(index) {
+    let current = this.head;
+    let idx = 0;
+
+    if (index > this.size) {
+      console.log("Index not found");
+      return;
+    }
+
+    while (idx < index) {
+      current = current.next ?? current;
+      idx++;
+    }
+
+    return current.data;
+  }
+
+  forEach(callback) {
     let current = this.head;
 
     while (current) {
@@ -51,60 +109,53 @@ export default class LinkedList {
     }
   }
 
-  static map(start, callback) {
-    let curr = start;
-    let temp = null;
+  map(callback) {
+    let newList = new LinkedList();
+    let curr = this.head;
 
     while (curr != null) {
-      temp = curr.next;
-      curr.next = new ListNode(callback(curr.data));
-      curr.next.next = temp;
-      curr = temp;
+      newList.add(new Node(callback(curr.data)));
+      curr = curr.next;
     }
 
-    curr = start;
-
-    let origin = start;
-    let copy = start.next;
-    let copySize = 0;
-
-    temp = copy;
-
-    while (origin != null && copy != null) {
-      origin.next = origin.next != null ? origin.next.next : origin.next;
-      copy.next = copy.next != null ? copy.next.next : copy.next;
-      copySize++;
-      origin = origin.next;
-      copy = copy.next;
-    }
-    const newList = new this.prototype.constructor(temp);
-    newList.size = copySize;
     return newList;
   }
 
   getLast() {
+    return this.tail;
+  }
+
+  pop() {
     let node = this.head;
+    let previous = null;
 
     while (node && node.next) {
+      previous = node;
       node = node.next;
     }
 
-    return node;
+    previous.next = null;
+    this.tail = previous;
+    this.size--;
+
+    return node.data;
   }
 
-  printList() {
+  printAll() {
     let curr = this.head;
     let str = "";
     while (curr) {
-      str += curr.data + " ";
+      console.log(curr.data);
+      str += curr.data;
       curr = curr.next;
     }
+
     return str;
   }
 
   toArray() {
     let curr = this.head;
-    let arr = [];
+    const arr = [];
     while (curr) {
       arr.push(curr.data);
       curr = curr.next;
@@ -112,7 +163,7 @@ export default class LinkedList {
     return arr;
   }
 
-  clear(){
+  clear() {
     this.head = null;
     this.size = 0;
   }
