@@ -33,3 +33,5 @@ function diceGameSimulation(simulations) {
 
   return rolls;
 }
+
+export default diceGameSimulation;
