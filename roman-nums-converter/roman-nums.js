@@ -103,21 +103,22 @@ window.addEventListener("load", () => {
   let output = document.getElementById("output");
 
   convertBtn.addEventListener("click", () => {
-    if (isNaN(parseInt(number.value))) {
+    const input = parseInt(number.value);
+    if (isNaN(input)) {
       output.innerText = "Please enter a valid number";
       return;
     }
 
-    if (parseInt(number.value) < 0) {
+    if (input < 0) {
       output.innerText = "Please enter a number greater than or equal to 1";
       return;
     }
 
-    if (parseInt(number.value) > 4000) {
+    if (input > 4000) {
       output.innerText = "Please enter a number less than or equal to 3999";
       return;
     }
 
-    output.innerText = romanNum(parseInt(number.value));
+    output.innerText = romanNum(input);
   });
 });
