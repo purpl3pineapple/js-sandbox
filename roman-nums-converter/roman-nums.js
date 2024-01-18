@@ -114,7 +114,7 @@ window.addEventListener("load", () => {
       return;
     }
 
-    if (input > 4000) {
+    if (input >= 4000) {
       output.innerText = "Please enter a number less than or equal to 3999";
       return;
     }
