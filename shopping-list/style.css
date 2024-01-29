@@ -1,0 +1,8 @@
+.hidden {
+  display: none !important;
+}
+
+.edit {
+  color: #ccc;
+  font-weight: bold;
+}
