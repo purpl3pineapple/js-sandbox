@@ -13,7 +13,7 @@ function staircase(n) {
   const stcs = stairs.map((step, idx) => {
     let count = n - idx;
     while (count > 1) {
-      step = step.concat(" ");
+      step += " ";
       count--;
     }
 
@@ -22,3 +22,5 @@ function staircase(n) {
 
   stcs.forEach(stair => console.log(stair));
 }
+
+staircase(10);
