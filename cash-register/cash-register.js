@@ -1,6 +1,64 @@
+const currency = new Map([
+  ["PENNY", 0.01],
+  ["NICKEL", 0.05],
+  ["DIME", 0.1],
+  ["QUARTER", 0.25],
+  ["ONE", 1],
+  ["FIVE", 5],
+  ["TEN", 10],
+  ["TWENTY", 20],
+  ["HUNDRED", 100],
+]);
+
+const statuses = {
+  open: "OPEN",
+  closed: "CLOSED",
+  insufficient: "INSUFFICIENT_FUNDS",
+  cust_insufficient: "Customer does not have enough money to purchase the item",
+  no_change: "No change due - customer paid with exact cash",
+};
+const getRegister = totals =>
+  [...currency.entries()].map(([unit, amt]) => [
+    unit,
+    Number((amt * totals[unit]).toFixed(2)),
+  ]);
+
+const createDrawer = (
+  PENNY = 0,
+  NICKEL = 0,
+  DIME = 0,
+  QUARTER = 0,
+  ONE = 0,
+  FIVE = 0,
+  TEN = 0,
+  TWENTY = 0,
+  HUNDRED = 0
+) => ({
+  PENNY,
+  NICKEL,
+  DIME,
+  QUARTER,
+  ONE,
+  FIVE,
+  TEN,
+  TWENTY,
+  HUNDRED,
+});
+
+const drawers = [
+  createDrawer(101, 41, 31, 17, 90, 11, 2, 3, 1),
+  createDrawer(1),
+  createDrawer(1, 0, 0, 0, 1),
+  createDrawer(50),
+];
+
+const cid = getRegister(drawers[3]);
+const price = 19.5;
+
 window.addEventListener("load", () => {
+  const cashInput = document.getElementById("cash");
   const purchaseBtn = document.getElementById("purchase-btn");
-  const total = document.getElementById("total-amt");
+  const changeDueDiv = document.getElementById("change-due");
   const pennies = document.getElementById("pennies");
   const nickels = document.getElementById("nickels");
   const dimes = document.getElementById("dimes");
@@ -11,96 +69,119 @@ window.addEventListener("load", () => {
   const twenties = document.getElementById("twenties");
   const hundreds = document.getElementById("hundreds");
 
-  const prices = [19.5, 3.26];
+  function updateRegister(drawer) {
+    pennies.innerText = `$${drawer.get("PENNY").toFixed(2)}`;
+    nickels.innerText = `$${drawer.get("NICKEL").toFixed(2)}`;
+    dimes.innerText = `$${drawer.get("DIME").toFixed(2)}`;
+    quarters.innerText = `$${drawer.get("QUARTER").toFixed(2)}`;
+    ones.innerText = `$${drawer.get("ONE")}`;
+    fives.innerText = `$${drawer.get("FIVE")}`;
+    tens.innerText = `$${drawer.get("TEN")}`;
+    twenties.innerText = `$${drawer.get("TWENTY")}`;
+    hundreds.innerText = `$${drawer.get("HUNDRED")}`;
+  }
 
-  const currency = new Map([
-    ["PENNY", 0.01],
-    ["NICKEL", 0.05],
-    ["DIME", 0.1],
-    ["QUARTER", 0.25],
-    ["ONE", 1],
-    ["FIVE", 5],
-    ["TEN", 10],
-    ["TWENTY", 20],
-    ["HUNDRED", 100],
-  ]);
+  function newTextNode(value) {
+    const container = document.createElement("p");
+    const text = document.createTextNode(value);
+    container.appendChild(text);
+    return container;
+  }
 
-  const cashInDrawer = ({
-    pennies = 0,
-    nickels = 0,
-    dimes = 0,
-    quarters = 0,
-    ones = 0,
-    fives = 0,
-    tens = 0,
-    twenties = 0,
-    hundreds = 0,
-  }) => {
-    const bills = new Map(
-      [...currency].map(([unit, val]) => {
-        switch (unit) {
-          case "PENNY":
-            return [unit, val * pennies];
+  function newDenomNode(denom, value) {
+    return newTextNode(`${denom}: $${value}`);
+  }
 
-          case "NICKEL":
-            return [unit, val * nickels];
+  function updateChangeDueUI(...nodes) {
+    changeDueDiv.innerHTML = "";
 
-          case "DIME":
-            return [unit, val * dimes];
+    nodes.forEach(node => {
+      changeDueDiv.appendChild(node);
+    });
+  }
 
-          case "QUARTER":
-            return [unit, val * quarters];
+  function updateChangeDue(status, change) {
+    const statusNode = newTextNode(`Status: ${status}`);
 
-          case "ONE":
-            return [unit, val * ones];
+    const registerChange =
+      status === statuses.closed
+        ? [...change.entries()]
+            .filter(denom =>
+              ["PENNY", "NICKEL", "DIME", "QUARTER"].includes(denom[0])
+            )
+            .map(([unit, val]) =>
+              newDenomNode(unit, val > 0 ? val.toFixed(2) : val)
+            )
+        : [...change.entries()].map(([unit, val]) => newDenomNode(unit, val));
 
-          case "FIVE":
-            return [unit, val * fives];
+    updateChangeDueUI(statusNode, ...registerChange);
+  }
 
-          case "TEN":
-            return [unit, val * tens];
+  function updateUI(status, drawer, change) {
+    updateRegister(drawer);
+    updateChangeDue(status, change);
+  }
 
-          case "TWENTY":
-            return [unit, val * twenties];
+  function purchase() {
+    const register = {
+      status: statuses.closed,
+      drawer: new Map(cid),
+      change: new Map(),
+    };
 
-          case "HUNDRED":
-            return [unit, val * hundreds];
-        }
-      })
+    const cash = parseFloat(cashInput.value);
+
+    const changeDue = cash - price;
+    let change = Number(changeDue.toFixed(2));
+
+    let totalCashInDrawer = Number(
+      [...register.drawer.values()]
+        .reduce((sum, curr) => sum + curr, 0)
+        .toFixed(2)
     );
 
-    const total = [...bills].reduce((amt, [_, val]) => amt + val, 0);
-
-    return { bills, total };
-  };
-
-  const drawer = cashInDrawer({
-    pennies: 200,
-    nickels: 55,
-    dimes: 110,
-    quarters: 35,
-    ones: 45,
-    fives: 12,
-    tens: 13,
-    twenties: 8,
-    hundreds: 3,
-  });
-
-  const purchase = () => {
-    const currentDrawer = drawer.bills;
-    console.log({ currentDrawer });
-    let cash = parseFloat(document.getElementById("cash").value);
-    const changeDue = prices[0] - cash;
-
-    console.log({ currentDrawer });
-    /* if (drawer.total < changeDue) {
-
-    } else if (drawer.total === changeDue) {
-
+    if (changeDue < 0) {
+      alert(statuses.cust_insufficient);
+      return;
+    } else if (changeDue === 0) {
+      changeDueDiv.innerHTML = statuses.no_change;
+      return;
+    } else if (changeDue > totalCashInDrawer) {
+      register.status = statuses.insufficient;
     } else {
+      register.status =
+        changeDue === totalCashInDrawer ? statuses.closed : statuses.open;
 
-    } */
-  };
+      if (changeDue === totalCashInDrawer) {
+        [...register.drawer.entries()].reverse().forEach(([denom, value]) => {
+          if (currency.get(denom) < 1) register.change.set(denom, value);
+        });
+      } else {
+        [...currency.entries()].reverse().forEach(([unit, dollarAmt]) => {
+          if (dollarAmt <= change) {
+            while (
+              dollarAmt <= change &&
+              register.drawer.get(unit) - dollarAmt >= 0
+            ) {
+              register.drawer.set(unit, register.drawer.get(unit) - dollarAmt);
+              register.change.set(
+                unit,
+                (register.change.get(unit) || 0) + dollarAmt
+              );
+              change = Number((change - dollarAmt).toFixed(2));
+            }
+          }
+        });
+
+        if (change !== 0 && changeDue !== totalCashInDrawer) {
+          register.status = statuses.insufficient;
+          register.change.clear();
+        }
+      }
+    }
+
+    updateUI(register.status, register.drawer, register.change);
+  }
 
   purchaseBtn.addEventListener("click", purchase);
 });
