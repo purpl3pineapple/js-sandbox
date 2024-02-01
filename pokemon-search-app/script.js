@@ -65,30 +65,6 @@ const newTypeBadge = pokemonType => {
   return typeValueSpan;
 };
 
-const newStack = (data, start = false) => {
-  const stackDiv = document.createElement("div");
-  stackDiv.className = `container hstack gap-3 my-2 ${
-    start ? "justify-content-start" : "justify-content-around"
-  }`;
-
-  data.forEach((dataPoint, idx) => {
-    stackDiv.appendChild(dataPoint);
-    /* if (separator && idx !== data.length - 1 && data.length > 1) {
-      separator = document.createElement(separator);
-      stackDiv.appendChild(separator);
-    } */
-  });
-
-  return stackDiv;
-};
-
-const newPokemonTypeBadgeStack = types =>
-  newStack(
-    types.map(type => newTypeBadge(type)),
-    "",
-    true
-  );
-
 const capitalizeFirstLetter = str => {
   const split = str.split(" ");
   split.forEach((char, idx) => {
@@ -135,7 +111,6 @@ window.addEventListener("load", async () => {
         weight,
       } = pokemon;
 
-      const badges = newPokemonTypeBadgeStack(types);
       pokemonSprite.setAttribute("src", imgSrc);
       pokemonName.innerText = capitalizeFirstLetter(name);
       pokemonId.innerText = `#${id}`;
