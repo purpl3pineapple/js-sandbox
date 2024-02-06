@@ -1,22 +1,26 @@
 body {
-  background-color: blue;
+  color: antiquewhite;
 }
-
 .title {
   color: gold;
   -webkit-text-stroke: 3.5px blue;
   font-size: 75px;
   font-weight: 900;
 }
-
+.enter-name {
+  background-color: blue;
+}
 #enter-name {
-  color: gold;
-  -webkit-text-stroke: 1px blue;
-  font-weight: 400;
+  font-weight: 700;
 }
 
-.search-btn {
+#search-button {
   background-color: crimson;
+}
+
+#search-button:hover {
+  background-color: gold;
+  color: blue !important;
 }
 
 .pokemon-card {

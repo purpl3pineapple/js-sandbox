@@ -5,28 +5,33 @@ const pokeapiURL = new URL(
 const getPokemon = async nameOrID => {
   try {
     const data = await fetch(`${pokeapiURL.href}/${nameOrID}`);
-    const pokemon = await data.json();
-    const types = pokemon.types.map(({ type }) => type.name);
-    const stats = new Map(
-      pokemon.stats.map(({ base_stat, stat }) => [stat.name, base_stat])
-    );
+    if (data.ok) {
+      const pokemon = await data.json();
+      const types = pokemon.types.map(({ type }) => type.name);
+      const stats = new Map(
+        pokemon.stats.map(({ base_stat, stat }) => [stat.name, base_stat])
+      );
 
-    return {
-      imgSrc: pokemon.sprites.front_default,
-      name: pokemon.name,
-      id: pokemon.id,
-      height: pokemon.height,
-      weight: pokemon.weight,
-      attack: stats.get("attack"),
-      defense: stats.get("defense"),
-      hp: stats.get("hp"),
-      specialAttack: stats.get("special-attack"),
-      specialDefense: stats.get("special-defense"),
-      speed: stats.get("speed"),
-      types,
-    };
+      return {
+        imgSrc: pokemon.sprites.front_default,
+        name: pokemon.name,
+        id: pokemon.id,
+        height: pokemon.height,
+        weight: pokemon.weight,
+        attack: stats.get("attack"),
+        defense: stats.get("defense"),
+        hp: stats.get("hp"),
+        specialAttack: stats.get("special-attack"),
+        specialDefense: stats.get("special-defense"),
+        speed: stats.get("speed"),
+        types,
+      };
+    } else {
+      alert("Pokémon not found");
+      throw new Error("Pokémon not found...");
+    }
   } catch (e) {
-    alert("Pokémon not found");
+    console.log({ e });
   }
 };
 
@@ -91,39 +96,45 @@ window.addEventListener("load", async () => {
   const pokemonSpecialDefense = document.getElementById("special-defense");
   const pokemonSpeed = document.getElementById("speed");
 
+  const displayPokemon = async input => {
+    getPokemon(input).then(pokemon => {
+      if (pokemon) {
+        const {
+          attack,
+          defense,
+          height,
+          hp,
+          id,
+          imgSrc,
+          name,
+          specialAttack,
+          specialDefense,
+          speed,
+          types,
+          weight,
+        } = pokemon;
+
+        pokemonSprite.setAttribute("src", imgSrc);
+        pokemonName.innerText = capitalizeFirstLetter(name);
+        pokemonId.innerText = `#${id}`;
+        pokemonHeight.innerText = height;
+        pokemonWeight.innerText = weight;
+        pokemonTypes.innerHTML = "";
+        types.forEach(type => pokemonTypes.appendChild(newTypeBadge(type)));
+        pokemonHP.innerText = hp;
+        pokemonAttack.innerText = attack;
+        pokemonDefense.innerText = defense;
+        pokemonSpecialAttack.innerText = specialAttack;
+        pokemonSpecialDefense.innerText = specialDefense;
+        pokemonSpeed.innerText = speed;
+      }
+    });
+  };
+
   searchBtn.addEventListener("click", async e => {
     e.preventDefault();
-    const pokemon = await getPokemon(searchInput.value.toLowerCase());
-
-    if (pokemon) {
-      const {
-        attack,
-        defense,
-        height,
-        hp,
-        id,
-        imgSrc,
-        name,
-        specialAttack,
-        specialDefense,
-        speed,
-        types,
-        weight,
-      } = pokemon;
-
-      pokemonSprite.setAttribute("src", imgSrc);
-      pokemonName.innerText = capitalizeFirstLetter(name);
-      pokemonId.innerText = `#${id}`;
-      pokemonHeight.innerText = height;
-      pokemonWeight.innerText = weight;
-      pokemonTypes.innerHTML = "";
-      types.forEach(type => pokemonTypes.appendChild(newTypeBadge(type)));
-      pokemonHP.innerText = hp;
-      pokemonAttack.innerText = attack;
-      pokemonDefense.innerText = defense;
-      pokemonSpecialAttack.innerText = specialAttack;
-      pokemonSpecialDefense.innerText = specialDefense;
-      pokemonSpeed.innerText = speed;
-    }
+    displayPokemon(searchInput.value.toLowerCase());
   });
+
+  displayPokemon(Math.floor(Math.random() * 1000));
 });
