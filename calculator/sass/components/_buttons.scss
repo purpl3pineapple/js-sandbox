@@ -1,0 +1,30 @@
+@use "../abstracts" as *;
+@use "../text" as *;
+
+.btn {
+  @extend .col-1;
+  @extend .text-center;
+  @extend .fs-4;
+  height: 100%;
+  background-color: $num-button-bg;
+  color: white;
+}
+
+.wide-btn {
+  @extend .col-2;
+  @extend .text-center;
+  @extend .fs-4;
+  height: 100%;
+}
+
+.tall-btn {
+  @extend .col-1;
+  @extend .text-center;
+  @extend .fs-4;
+  height: 200%;
+}
+
+.highlight:hover {
+  transform: scale(1.05);
+  color: $highlight;
+}

@@ -1,0 +1,21 @@
+@use "../abstracts/vars" as *;
+
+.main-bg {
+  background-color: $ui-bg;
+}
+
+.op {
+  background-color: $op-button-bg;
+}
+
+.clear {
+  background-color: $clear-btn !important;
+}
+
+.equals {
+  background-color: $eq-btn !important;
+}
+
+.text-highlight {
+  color: $highlight !important;
+}

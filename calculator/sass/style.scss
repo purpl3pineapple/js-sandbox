@@ -1,0 +1,26 @@
+@use "abstracts" as *;
+@use "layouts" as *;
+@use "text" as *;
+@use "components" as *;
+@use "colors";
+
+body {
+  max-height: 100vh;
+}
+
+#display {
+  height: 20%;
+  padding-top: 2%;
+  color: white;
+}
+
+#calculator {
+  margin: 50% auto;
+  width: 300px;
+  height: 450px;
+  background-color: rgb(0, 0, 0.4);
+}
+
+#result {
+  word-break: break-all;
+}

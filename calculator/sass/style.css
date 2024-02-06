@@ -1,0 +1,203 @@
+.col-1, .btn, .tall-btn {
+  width: 25% !important;
+}
+
+.col-2, .wide-btn {
+  width: 50% !important;
+}
+
+.col-3 {
+  width: 75% !important;
+}
+
+.col-4 {
+  width: 100% !important;
+}
+
+.row-1, .row, .button-row, .button-top-row, .button-bottom-row {
+  height: 16.6666666667% !important;
+}
+
+.row-2 {
+  height: 33.3333333333% !important;
+}
+
+.row-3 {
+  height: 50% !important;
+}
+
+.row-4 {
+  height: 66.6666666667% !important;
+}
+
+.row-5 {
+  height: 83.3333333333% !important;
+}
+
+.row-6 {
+  height: 100% !important;
+}
+
+.fs-1 {
+  font-size: 0.4rem;
+}
+
+.fs-2 {
+  font-size: 0.8rem;
+}
+
+.fs-3 {
+  font-size: 1.2rem;
+}
+
+.fs-4, .btn, .wide-btn, .tall-btn {
+  font-size: 1.6rem;
+}
+
+.fs-5 {
+  font-size: 2rem;
+}
+
+.fs-6 {
+  font-size: 2.4rem;
+}
+
+.fs-7 {
+  font-size: 2.8rem;
+}
+
+.fs-8 {
+  font-size: 3.2rem;
+}
+
+.fs-9 {
+  font-size: 3.6rem;
+}
+
+.d-flex, .row, .button-row, .button-top-row, .button-bottom-row {
+  display: flex !important;
+}
+
+.flex-column {
+  flex-direction: column !important;
+}
+
+.jc-center {
+  justify-content: center !important;
+}
+
+.jc-around {
+  justify-content: space-around !important;
+}
+
+.jc-between {
+  justify-content: space-between !important;
+}
+
+.jc-evenly {
+  justify-content: space-evenly !important;
+}
+
+.ai-center, .row, .button-row, .button-top-row, .button-bottom-row {
+  align-items: center !important;
+}
+
+.ai-start {
+  align-items: start !important;
+}
+
+.ai-end {
+  align-items: end !important;
+}
+
+@font-face {
+  font-family: "New Watch";
+  font-style: normal;
+  font-weight: normal;
+  src: local("New Watch"), url("../fonts/new-watch.woff") format("woff");
+}
+.calc-font, .calc-display {
+  font-family: "New Watch";
+}
+
+.calc-display {
+  height: 50%;
+}
+
+.button-top-row {
+  padding-top: 2%;
+}
+
+.button-bottom-row {
+  padding-bottom: 2%;
+  align-items: end !important;
+}
+
+.text-center, .btn, .wide-btn, .tall-btn {
+  text-align: center !important;
+}
+
+.container {
+  padding-left: 0.5%;
+  padding-right: 0.5%;
+}
+
+.btn {
+  height: 100%;
+  background-color: #50514f;
+  color: white;
+}
+
+.wide-btn {
+  height: 100%;
+}
+
+.tall-btn {
+  height: 200%;
+}
+
+.highlight:hover {
+  transform: scale(1.05);
+  color: #44ffd2;
+}
+
+.main-bg {
+  background-color: #99b2dd;
+}
+
+.op {
+  background-color: #7c7c7a;
+}
+
+.clear {
+  background-color: #ff5964 !important;
+}
+
+.equals {
+  background-color: #35a7ff !important;
+}
+
+.text-highlight {
+  color: #44ffd2 !important;
+}
+
+body {
+  max-height: 100vh;
+}
+
+#display {
+  height: 20%;
+  padding-top: 2%;
+  color: white;
+}
+
+#calculator {
+  margin: 50% auto;
+  width: 300px;
+  height: 450px;
+  background-color: rgb(0, 0, 0);
+}
+
+#result {
+  word-break: break-all;
+}/*# sourceMappingURL=style.css.map */

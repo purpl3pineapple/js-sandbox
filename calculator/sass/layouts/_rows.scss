@@ -1,0 +1,22 @@
+@use "../abstracts" as *;
+
+.row {
+  @extend .d-flex;
+  @extend .ai-center;
+  @extend .row-1;
+}
+
+.button-row {
+  @extend .row;
+}
+
+.button-top-row {
+  @extend .row;
+  padding-top: 2%;
+}
+
+.button-bottom-row {
+  @extend .row;
+  padding-bottom: 2%;
+  align-items: end !important;
+}

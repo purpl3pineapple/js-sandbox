@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Calculator</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="./sass/style.css"
+    />
+    <script src="./script.js"></script>
+  </head>
+  <body class="d-flex jc-center ai-center">
+    <div
+      id="calculator"
+      class="container d-flex flex-column"
+    >
+      <div
+        id="display"
+        class="container d-flex flex-column ai-end fs-5"
+      >
+        <span
+          id="result"
+          class="calc-display text-highlight"
+        ></span>
+        <span
+          id="input"
+          class="calc-display"
+          >0</span
+        >
+      </div>
+      <div class="button-top-row">
+        <button
+          id="clear"
+          class="wide-btn highlight clear"
+        >
+          A/C
+        </button>
+        <button
+          id="divide"
+          class="btn highlight op"
+        >
+          /
+        </button>
+        <button
+          id="multiply"
+          class="btn highlight op"
+        >
+          X
+        </button>
+      </div>
+      <div class="button-row">
+        <button
+          id="one"
+          class="btn highlight num"
+        >
+          1
+        </button>
+        <button
+          id="two"
+          class="btn highlight num"
+        >
+          2
+        </button>
+        <button
+          id="three"
+          class="btn highlight num"
+        >
+          3
+        </button>
+        <button
+          id="add"
+          class="btn highlight op"
+        >
+          +
+        </button>
+      </div>
+      <div class="button-row">
+        <button
+          id="four"
+          class="btn highlight num"
+        >
+          4
+        </button>
+        <button
+          id="five"
+          class="btn highlight num"
+        >
+          5
+        </button>
+        <button
+          id="six"
+          class="btn highlight num"
+        >
+          6
+        </button>
+        <button
+          id="subtract"
+          class="btn highlight op"
+        >
+          -
+        </button>
+      </div>
+      <div class="button-row">
+        <button
+          id="seven"
+          class="btn highlight num"
+        >
+          7
+        </button>
+        <button
+          id="eight"
+          class="btn highlight num"
+        >
+          8
+        </button>
+        <button
+          id="nine"
+          class="btn highlight num"
+        >
+          9
+        </button>
+      </div>
+      <div class="button-bottom-row">
+        <button
+          id="zero"
+          class="btn wide-btn highlight num"
+        >
+          0
+        </button>
+        <button
+          id="decimal"
+          class="btn highlight num"
+        >
+          .
+        </button>
+        <button
+          id="equals"
+          class="tall-btn highlight equals"
+        >
+          =
+        </button>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+      integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

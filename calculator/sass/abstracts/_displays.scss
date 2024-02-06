@@ -1,0 +1,6 @@
+@use "../text/fonts";
+
+.calc-display {
+  @extend .calc-font;
+  height: 50%;
+}

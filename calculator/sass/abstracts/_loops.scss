@@ -1,0 +1,21 @@
+@use "../abstracts/vars" as *;
+
+@for $itr from 1 through 4 {
+  .col-#{$itr} {
+    width: calc(100% / 4 * $itr) !important;
+  }
+}
+
+@for $itr from 1 through 6 {
+  .row-#{$itr} {
+    height: calc(100% / 6 * $itr) !important;
+  }
+}
+
+@while $fonts < 10 {
+  .fs-#{$fonts} {
+    font-size: calc(0.4rem * $fonts);
+  }
+
+  $fonts: $fonts + 1;
+}
