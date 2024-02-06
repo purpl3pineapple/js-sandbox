@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  data-bs-theme="dark"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Drum Machine</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="style.css"
+    />
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./favicon.ico"
+    />
+  </head>
+  <body
+    class="vh-50 p-5 d-flex justify-content-center align-items-center bg-primary-subtle font-monospace"
+  >
+    <div
+      id="drum-machine"
+      class="container d-flex justify-content-around m-auto p-4 bg-dark rounded"
+    >
+      <div
+        id="pads"
+        class="container col-6 m-0 p-3 bg-secondary rounded"
+      >
+        <div class="row pad-row mb-4">
+          <div class="col">
+            <button
+              id="sound-1"
+              class="btn btn-dark w-100 fs-3 fw-bold text-info shadow drum-pad"
+            >
+              Q
+              <audio
+                id="Q"
+                class="clip"
+                src="./sounds/kit1/ancient1.wav"
+              ></audio>
+            </button>
+          </div>
+
+          <div class="col">
+            <button
+              id="sound-2"
+              class="btn btn-dark w-100 fs-3 fw-bold text-info shadow drum-pad"
+            >
+              W
+              <audio
+                id="W"
+                class="clip"
+                src="./sounds/kit1/ancient2.wav"
+              ></audio>
+            </button>
+          </div>
+          <div class="col">
+            <button
+              id="sound-3"
+              class="btn btn-dark w-100 fs-3 fw-bold text-info shadow drum-pad"
+            >
+              E
+              <audio
+                id="E"
+                class="clip"
+                src="./sounds/kit1/ancient3.wav"
+              ></audio>
+            </button>
+          </div>
+        </div>
+        <div class="row pad-row mb-4">
+          <div class="col">
+            <button
+              id="sound-4"
+              class="btn btn-dark w-100 fs-3 fw-bold text-info shadow drum-pad"
+            >
+              A
+              <audio
+                id="A"
+                class="clip"
+                src="./sounds/kit1/sweep1.wav"
+              ></audio>
+            </button>
+          </div>
+
+          <div class="col">
+            <button
+              id="sound-5"
+              class="btn btn-dark w-100 fs-3 fw-bold text-info shadow drum-pad"
+            >
+              S
+              <audio
+                id="S"
+                class="clip"
+                src="./sounds/kit1/sweep2.wav"
+              ></audio>
+            </button>
+          </div>
+          <div class="col">
+            <button
+              id="sound-6"
+              class="btn btn-dark w-100 fs-3 fw-bold text-info shadow drum-pad"
+            >
+              D
+              <audio
+                id="D"
+                class="clip"
+                src="./sounds/kit1/sweep3.wav"
+              ></audio>
+            </button>
+          </div>
+        </div>
+        <div class="row pad-row">
+          <div class="col">
+            <button
+              id="sound-7"
+              class="btn btn-dark w-100 fs-3 fw-bold text-info shadow drum-pad"
+            >
+              Z
+              <audio
+                id="Z"
+                class="clip"
+                src="./sounds/kit1/twang1.wav"
+              ></audio>
+            </button>
+          </div>
+
+          <div class="col">
+            <button
+              id="sound-8"
+              class="btn btn-dark w-100 fs-3 fw-bold text-info shadow drum-pad"
+            >
+              X
+              <audio
+                id="X"
+                class="clip"
+                src="./sounds/kit1/twang2.wav"
+              ></audio>
+            </button>
+          </div>
+          <div class="col">
+            <button
+              id="sound-9"
+              class="btn btn-dark w-100 fs-3 fw-bold text-info shadow-lg drum-pad"
+            >
+              C
+              <audio
+                id="C"
+                class="clip"
+                src="./sounds/kit1/twang3.wav"
+              ></audio>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        id="interface"
+        class="container col-4 p-3 d-flex flex-column justify-content-between m-0 bg-secondary rounded"
+      >
+        <div
+          id="power"
+          class="d-flex justify-content-center"
+        >
+          <div>
+            <input
+              type="checkbox"
+              class="btn-check"
+              name="power-switch"
+              id="power-switch"
+              autocomplete="off"
+              role="switch"
+              checked
+            />
+            <label
+              class="btn btn-outline-info fw-bold btn-lg rounded-pill"
+              for="power-switch"
+              >Power</label
+            >
+          </div>
+        </div>
+        <div class="d-flex justify-content-center h-25">
+          <p
+            id="display"
+            class="p-2 m-auto text-center fw-bold bg-dark text-info fs-5 w-100 h-100"
+          ></p>
+        </div>
+        <div id="volume">
+          <input
+            type="range"
+            class="form-range"
+            id="volume-control"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0.5"
+          />
+        </div>
+        <div
+          id="kits"
+          class="mx-auto"
+        >
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="kits"
+              id="kit-1"
+              value="Kit 1"
+              checked
+            />
+            <label
+              class="form-check-label"
+              for="kit-1"
+              >Kit 1</label
+            >
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="kits"
+              id="kit-2"
+              value="Kit 2"
+            />
+            <label
+              class="form-check-label"
+              for="kit-2"
+              >Kit 2</label
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="script.js"
+      type="module"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
+</html>
