@@ -1,13 +1,13 @@
 import clips from "./clips.js";
 
-$("document").ready(function () {
+$("document").ready(() => {
   function setKit(kit) {
     sessionStorage.setItem("kit", `${kit}`);
 
-    clips.forEach(function ({ id, kit1, kit2 }) {
+    clips.forEach(({ id, kit1, kit2 }) => {
       $(`#${id}`).prop("src", kit === 1 ? kit1.path : kit2.path);
 
-      $(`button:contains(${id})`).on("click", function () {
+      $(`button:contains(${id})`).on("click", () => {
         playClip(id);
       });
     });
@@ -45,11 +45,11 @@ $("document").ready(function () {
     power($(this).prop("checked") ? "on" : "off");
   });
 
-  $("#kit-1").on("click", function () {
+  $("#kit-1").on("click", () => {
     setKit(1);
   });
 
-  $("#kit-2").on("click", function () {
+  $("#kit-2").on("click", () => {
     setKit(2);
   });
 
